@@ -1,5 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
+import { Group } from 'three'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -7,13 +8,33 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+//Group
+const group = new THREE.Group()
+scene.add(group)
+
 /**
  * Objects
  */
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
-const mesh = new THREE.Mesh(geometry, material)
-scene.add(mesh)
+const redgeometry = new THREE.BoxGeometry(1, 1, 1)
+const redmaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const redmesh = new THREE.Mesh(redgeometry, redmaterial)
+scene.add(redmesh)
+group.add(redmesh)
+
+
+const bluegeometry = new THREE.BoxGeometry(1, 1, 1)
+const bluematerial = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+const bluemesh = new THREE.Mesh(bluegeometry, bluematerial)
+scene.add(bluemesh)
+bluemesh.position.x = -2
+group.add(bluemesh)
+
+const greengeometry = new THREE.BoxGeometry(1, 1, 1)
+const greenmaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff })
+const greenmesh = new THREE.Mesh(greengeometry, greenmaterial)
+scene.add(greenmesh)
+greenmesh.position.x = 2
+group.add(bluemesh)
 
 /**
  * Sizes
