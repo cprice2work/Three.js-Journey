@@ -15,13 +15,17 @@ scene.add(group)
 /**
  * Objects
  */
-const redgeometry = new THREE.BoxGeometry(1, 1, 1)
-const redmaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 })
-const redmesh = new THREE.Mesh(redgeometry, redmaterial)
-scene.add(redmesh)
-group.add(redmesh)
+//RedCube
+const redGeometry = new THREE.BoxGeometry(1, 1, 1)
 
+const redMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 
+const redMesh = new THREE.Mesh(redGeometry, redMaterial)
+
+scene.add(redMesh)
+group.add(redMesh)
+
+//BlueCube
 const bluegeometry = new THREE.BoxGeometry(1, 1, 1)
 const bluematerial = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
 const bluemesh = new THREE.Mesh(bluegeometry, bluematerial)
@@ -29,6 +33,8 @@ scene.add(bluemesh)
 bluemesh.position.x = -2
 group.add(bluemesh)
 
+
+//GreenGeometry
 const greengeometry = new THREE.BoxGeometry(1, 1, 1)
 const greenmaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff })
 const greenmesh = new THREE.Mesh(greengeometry, greenmaterial)
