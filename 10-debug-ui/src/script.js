@@ -2,6 +2,13 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import gsap from 'gsap'
+import GUI from 'lil-gui'
+
+
+// Debug
+const gui = new GUI();
+console.log()
+
 
 /**
  * Base
@@ -19,6 +26,51 @@ const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
+
+//Debug
+
+//Regular set up
+// gui.add(mesh.position, 'y', -3, 3, 0.01)
+
+//Chaining Method
+gui
+    .add(mesh.position, 'x' )
+    .min(-3)
+    .max(3)
+    .step(0.01)
+
+
+gui
+    .add(mesh.position, 'y' )
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('elevation')
+
+
+gui
+    .add(mesh.position, 'z' )
+    .min(-3)
+    .max(3)
+    .step(0.01)
+
+gui
+    .add(mesh, 'visible')
+
+gui 
+    .add(material, 'wireframe')
+
+const parameters = {
+     color: 0xff0000
+}
+
+gui
+    .addColor(parameters, 'color')
+    .onChange(() =>
+    {
+        material.color.set(parameters.color)
+    })
+
 
 /**
  * Sizes
