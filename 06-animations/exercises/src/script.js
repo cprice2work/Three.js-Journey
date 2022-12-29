@@ -1,6 +1,12 @@
 import './style.css'
 import * as THREE from 'three'
 import gsap from 'gsap'
+import GUI from 'lil-gui'
+
+//Debug
+const gui = new GUI();
+console.log()
+
 
 console.log(gsap)
 
@@ -18,16 +24,65 @@ const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
+//Debug
+
+//Regular set up
+// gui.add(mesh.position, 'y', -3, 3, 0.01)
+
+//Chaining Method
+gui
+    .add(mesh.position, 'x' )
+    .min(-3)
+    .max(3)
+    .step(0.01)
+
+
+gui
+    .add(mesh.position, 'y' )
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('elevation')
+
+
+gui
+    .add(mesh.position, 'z' )
+    .min(-3)
+    .max(3)
+    .step(0.01)
+
+gui
+    .add(mesh, 'visible')
+
+gui 
+    .add(material, 'wireframe')
+
+const parameters = {
+     color: 0xff0000
+}
+
+gui
+    .addColor(parameters, 'color')
+    .onChange(() =>
+    {
+        material.color.set(parameters.color)
+    })
+
+
+
+
+
 // Sizes
 const sizes = {
-    width: 800,
-    height: 600
+    width: window.innerWidth,
+    height: window.innerHeight
 }
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
 camera.position.z = 3
 scene.add(camera)
+
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -57,12 +112,14 @@ const tick = () =>
     // const currentTime = Date.now()
     // const deltaTime = currentTime - time
     // time = currentTime
+	// button
 
+    
     //console.log(deltaTime)
     // console.log(time)
 
     //**Update objects Version(1/4) - This makes the object spin and slow... spin and slow
-    // mesh.rotation.y = elapsedTime
+    // mesh.rotation.y += elapsedTime
 
     //**Update objects Version(2/4)- This allow for for object to spin at the same speed regardless for frame rate
     // mesh.rotation.y += 0.001 * deltaTime
@@ -88,5 +145,10 @@ const tick = () =>
     window.requestAnimationFrame(tick)
 
 }
+
+gui.add( 'myFunction' ); 
+
 tick()
+
+
 

@@ -9,6 +9,8 @@ import GUI from 'lil-gui'
 const gui = new GUI();
 console.log()
 
+
+
 /**
  * Base
  */
@@ -60,9 +62,10 @@ gui
 gui 
     .add(material, 'wireframe')
 
-const parameters = {
-     color: 0xff0000
-}
+    const parameters = 
+    {
+        color: 0xff0000
+    }
 
 gui
     .addColor(parameters, 'color')
